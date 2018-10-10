@@ -70,6 +70,7 @@
         </div>
     @endif
 
+    {{ $data  }}
     <div class="content">
 
         <div class="title m-b-md">Apiato</div>
