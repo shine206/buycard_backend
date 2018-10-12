@@ -1,16 +1,21 @@
 <?php
 
-namespace App\Containers\User\UI\API\Requests;
+namespace App\Containers\Card\UI\API\Requests;
 
 use App\Ship\Parents\Requests\Request;
 
 /**
- * Class FindUserByIdRequest.
- *
- * @author Mahmoud Zalt <mahmoud@zalt.me>
+ * Class CreateCardRequest.
  */
-class FindUserByIdRequest extends Request
+class CreateCardRequest extends Request
 {
+
+    /**
+     * The assigned Transporter for this Request
+     *
+     * @var string
+     */
+    // protected $transporter = \App\Ship\Transporters\DataTransporter::class;
 
     /**
      * Define which Roles and/or Permissions has access to this request.
@@ -28,17 +33,17 @@ class FindUserByIdRequest extends Request
      * @var  array
      */
     protected $decode = [
-        'id',
+        // 'id',
     ];
 
     /**
-     * Defining the URL parameters (`/stores/999/items`) allows applying
+     * Defining the URL parameters (e.g, `/user/{id}`) allows applying
      * validation rules on them and allows accessing them like request data.
      *
      * @var  array
      */
     protected $urlParameters = [
-        'id',
+        // 'id',
     ];
 
     /**
@@ -47,7 +52,8 @@ class FindUserByIdRequest extends Request
     public function rules()
     {
         return [
-            'id' => 'required|exists:users,id'
+            // 'id' => 'required',
+            // '{user-input}' => 'required|max:255',
         ];
     }
 
@@ -57,7 +63,7 @@ class FindUserByIdRequest extends Request
     public function authorize()
     {
         return $this->check([
-            'hasAccess|isOwner',
+            'hasAccess',
         ]);
     }
 }
